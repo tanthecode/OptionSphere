@@ -169,19 +169,28 @@ elif st.session_state.page == "results":
     # Select button to confirm the row selection
     if st.button("Select Row"):
         st.session_state.selected_row = row_details
-        st.write(f"You have selected the row: {selected_row}")
-        # Redirect to http://localhost:8502
-        st.markdown(
-            """
-            <script>
-            window.location.href="https://optionspheremain.streamlit.app/";
-            </script>
-            """,
-            unsafe_allow_html=True,
-        )
+        st.session_state.page = "details"  # Change to the details page
+        st.experimental_rerun()
 
     # Back button
     if st.button("Go Back"):
+        reset_to_home()
+        st.experimental_rerun()
+
+# Details Page
+elif st.session_state.page == "details":
+    st.title("Selected Row Details")
+    row_details = st.session_state.selected_row  # Access selected row from session state
+
+    if row_details is not None:
+        st.write(f"Name: {row_details['Name']}")
+        st.write(f"Instrument Key: {row_details['Instrument Key']}")
+        st.write(f"Strike Price: {row_details['Strike Price']}")
+        st.write(f"Instrument Type: {row_details['Instrument Type']}")
+        st.write(f"Expiry: {row_details['Expiry']}")
+
+    # Back to Home Page
+    if st.button("Back to Home"):
         reset_to_home()
         st.experimental_rerun()
 

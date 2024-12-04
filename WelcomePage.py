@@ -173,7 +173,9 @@ elif st.session_state.page == "results":
         # Redirect to http://localhost:8502
         st.markdown(
             """
-            <meta http-equiv="refresh" content="0; url=https://optionspheremain.streamlit.app/">
+            <script>
+            window.location.href="https://optionspheremain.streamlit.app/";
+            </script>
             """,
             unsafe_allow_html=True,
         )

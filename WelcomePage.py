@@ -169,15 +169,16 @@ elif st.session_state.page == "results":
     # Select button to confirm the row selection
     if st.button("Select Row"):
         st.session_state.selected_row = row_details
-    # Redirect to the specified URL
+        # Redirect to the specified URL
         st.markdown(
             """
-            <script>
-            window.location.href = "https://optionspheremain.streamlit.app/";
-            </script>
+            <a href="https://optionspheremain.streamlit.app/" target="_blank">
+                <button>Go to OptionSphere</button>
+            </a>
             """,
             unsafe_allow_html=True,
         )
+
 
 
 
